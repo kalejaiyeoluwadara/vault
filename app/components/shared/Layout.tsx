@@ -4,6 +4,8 @@ import { ReactQueryProvider } from "@/app/context/ReactQueryProvider";
 import { Toaster } from "sonner";
 import images from "@/public/images";
 import Image from "next/image";
+import Nav from "./Nav";
+import Provider from "../Provider";
 type Props = {
   children: React.ReactNode;
 };
@@ -38,7 +40,10 @@ const Layout = ({ children }: Props) => {
               unstyled: false,
             }}
           />
-          <Suspense fallback={<PageLoader />}>{children}</Suspense>
+          <Provider>
+            <Nav/>
+            {children}
+          </Provider>
         </ReactQueryProvider>
       )}
 
