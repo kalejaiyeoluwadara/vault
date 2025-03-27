@@ -1,63 +1,83 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
 
-export default function Home() {
+import React from 'react';
+import { 
+  Share2, 
+  FileText, 
+  Image, 
+  Lock 
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+
+interface QuickFeatureProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+const QuickFeature: React.FC<QuickFeatureProps> = ({ icon, title, description }) => (
+  <Card className="hover:shadow-lg transition-all duration-300 group">
+    <CardContent className="p-6 text-center">
+      <div className="mb-4 flex justify-center text-blue-600 group-hover:text-blue-800 transition-colors">
+        {icon}
+      </div>
+      <h3 className="text-xl font-semibold mb-2 text-gray-800">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </CardContent>
+  </Card>
+);
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            My template{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              Next app
-            </code>
-            .
-          </li>
-          <li>./create-next-project.sh my-cool-new-project</li>
-        </ol>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
+      <main className="container mx-auto px-4 pt-16 pb-24">
+        <div className="text-center">
+          <h1 className="text-5xl font-bold mb-6 text-gray-900 leading-tight">
+            Share Anything, 
+            <br />
+            <span className="text-blue-600">Instantly & Privately</span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Transfer texts, files, and images without ever needing to exchange contact information. 
+            Your data, your control.
+          </p>
+          <div className="flex justify-center space-x-4 mb-12">
+            <Button size="lg" className="shadow-md">
+              <Share2 className="mr-2 h-5 w-5" />
+              Start Sharing
+            </Button>
+          </div>
+        </div>
+
+        {/* Quick Features Section */}
+        <section className="mt-16">
+          <div className="grid md:px-20 md:grid-cols-3 gap-6">
+            <QuickFeature 
+              icon={<FileText className="h-12 w-12" />}
+              title="Secure Text"
+              description="Send and store text snippets without revealing your identity."
+            />
+            <QuickFeature 
+              icon={<Image className="h-12 w-12" />}
+              title="Image Vault"
+              description="Quickly store and share images with complete privacy."
+            />
+            <QuickFeature 
+              icon={<Lock className="h-12 w-12" />}
+              title="No Contact Needed"
+              description="Share data instantly without exchanging personal information."
+            />
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <p className="flex items-center gap-2 hover:underline hover:underline-offset-4">
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Easy setup
-        </p>
-        <p className="flex items-center gap-2 hover:underline hover:underline-offset-4">
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Ready made components
-        </p>
-        <Link
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="/users"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to users →
-        </Link>
+
+      <footer className="bg-gray-100 py-3">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-gray-600">
+            © 2025 Vault. Simple Sharing, Zero Friction.
+          </p>
+        </div>
       </footer>
     </div>
   );

@@ -23,17 +23,10 @@ const Nav: React.FC = () => {
   }, []);
 
   return (
-    <nav className="w-full bg-white px-4 py-3">
+    <nav className="w-full bg-white px-8 py-3">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo Section */}
-        <Link href={"/"} className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-          <Image
-            alt="Vault Logo"
-            height={30}
-            width={30}
-            src={"/globe.svg"}
-            className="rounded-full"
-          />
+        <Link href={"/"} className="flex items-center space-x-2 hover:opacity-80 transition-opacity">        
           <p className="text-xl font-bold text-gray-800">Vault</p>
         </Link>
 
