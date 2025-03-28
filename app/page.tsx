@@ -8,25 +8,9 @@ import {
   Lock 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { QuickFeature } from './components/QuickFeature';
 
-interface QuickFeatureProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
 
-const QuickFeature: React.FC<QuickFeatureProps> = ({ icon, title, description }) => (
-  <Card className="hover:shadow-lg transition-all duration-300 group">
-    <CardContent className="p-6 text-center">
-      <div className="mb-4 flex justify-center text-blue-600 group-hover:text-blue-800 transition-colors">
-        {icon}
-      </div>
-      <h3 className="text-xl font-semibold mb-2 text-gray-800">{title}</h3>
-      <p className="text-gray-600">{description}</p>
-    </CardContent>
-  </Card>
-);
 
 export default function HomePage() {
   return (
